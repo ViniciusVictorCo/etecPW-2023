@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack</title>
+</head>
+<body>
+    <script src="https://unpkg.com/alpinejs@3.1.x/dist/cdn.min.js" defer></script>
+    <script src="./script.js"></script>
+
+    <div x-data="app" x-cloak>
+      <a href="outro.html">outro serviço</a>
+      <div id="pcArea" class="cardArea">
+        <h3>Oponente</h3>
+        <template x-for="card in pcCards">
+          <!-- todo: don't like the logic in template -->
+          <img :src="card.showback?BACK_CARD:card.image" :title="card.showback?'':card.title">
+        </template>
+      </div>
+      <div id="playerArea" class="cardArea">
+        <h3>Jogador</h3>
+        <template x-for="card in playerCards">
+          <img :src="card.image" :title="card.title">
+        </template>
+      </div>
+      <div id="status">
+        <template x-if="playerTurn">
+          <p>
+            O que você escolhe?
+            <button @click="entregarMeBaralho" :disabled="hitMeDisabled">Manda mais!</button>
+            <button @click="ficarComBaralho">Não arrisco</button>
+          </p>
+        </template>
+        <template x-if="pcTurn">
+          <p>
+            <span x-text="pcText"></span>
+          </p>
+        </template>
+        <template x-if="playerBusted">
+          <p>
+            Você Estorou!
+            <button @click="novoJogo">Novo Jogo</button>
+          </p>
+        </template>
+        <template x-if="pcBusted">
+          <p>
+            Oponente Estourou - Você Venceu!
+            <button @click="novoJogo">Novo Jogo</button>
+          </p>
+        </template>
+        <template x-if="pcWon">
+          <p>
+            Oponente Venceu.
+            <button @click="novoJogo">Novo Jogo</button>
+          </p>
+        </template>
+        <template x-if="playerWon">
+          <p>
+            Você Venceu!
+            <button @click="novoJogo">Novo Jogo</button>
+          </p>
+        </template>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=REM&display=swap');
+
+* {
+    font-family: 'REM', sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.flex_buttons{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.grid_container {
+    margin-top: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-container{
+    border-radius: 35px;
+    box-shadow:  -12px -12px 24px #cccccc,
+                12px 12px 24px #ffffff;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+}
